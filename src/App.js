@@ -5,6 +5,10 @@ import { LeagueProvider } from './leagueContext';
 
 import './App.css';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { useState } from 'react';
+import Login from './components/Login/Login';
+import useToken from './components/App/useToken';
+import LogoutButton from './components/App/logoutButton';
 
 const theme = createTheme({
   palette: {
@@ -18,6 +22,10 @@ const theme = createTheme({
 });
 
 function App() {
+  const { token, setToken } = useToken();
+  if(!token){
+    return <Login setToken={setToken}></Login>
+  }
   return (
     <ThemeProvider theme={theme}>
       <Router>
@@ -38,6 +46,9 @@ function App() {
               // element={<TeamsPage/>}
             />
           </Routes>
+          <nav>
+            <LogoutButton/>
+          </nav>
         </div>
         </LeagueProvider>
       </Router>

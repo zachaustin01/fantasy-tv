@@ -47,7 +47,7 @@ function MobileNavigation() {
               Standings
             </MenuItem>
             <MenuItem onClick={handleCloseMenu} component={Link} to="/teams">
-              Contestants
+              Teams
             </MenuItem>
           </Menu>
         </Typography>
